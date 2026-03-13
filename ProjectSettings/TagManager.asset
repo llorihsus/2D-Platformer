@@ -7,6 +7,7 @@ TagManager:
   - Background
   - Hazards
   - Ground
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -50,7 +51,7 @@ TagManager:
   - name: Water
     uniqueID: 1795215919
     locked: 0
-  - name: Platforms
+  - name: Ground
     uniqueID: 2272237261
     locked: 0
   - name: Player
