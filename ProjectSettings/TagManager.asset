@@ -8,6 +8,9 @@ TagManager:
   - Hazards
   - Ground
   - Ladder
+  - Water
+  - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -16,12 +19,12 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Hazards
+  - Player
+  - Enemy
+  - Player Projectile
+  - Enemy Projectile
+  - Ladder
   - 
   - 
   - 
@@ -48,14 +51,17 @@ TagManager:
   - name: Background
     uniqueID: 1197255809
     locked: 0
-  - name: Water
-    uniqueID: 1795215919
-    locked: 0
-  - name: Ground
+  - name: Platforms
     uniqueID: 2272237261
     locked: 0
-  - name: Player
+  - name: Players
     uniqueID: 2672858561
+    locked: 0
+  - name: Coin
+    uniqueID: 1810778563
+    locked: 0
+  - name: UI
+    uniqueID: 542744361
     locked: 0
   m_RenderingLayers:
   - Default

@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool isOnLadder;
     float originalGravity;
+
     // ─── Lifecycle ───────────────────────────────────────────────────────
     void Start()
     {

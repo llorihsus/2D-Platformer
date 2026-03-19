@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8430813212429996461}
   - component: {fileID: 7178231061228475264}
   - component: {fileID: 4601014875884632776}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ladder
-  m_TagString: Untagged
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -495,8 +495,8 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2022730035
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayer: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -516,9 +516,9 @@ GameObject:
   - component: {fileID: 6094393001676429527}
   - component: {fileID: 6671991945017123075}
   - component: {fileID: 5388673280899435042}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1380,8 +1380,8 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2022730035
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1404,7 +1404,7 @@ GameObject:
   - component: {fileID: 7011640203530974650}
   - component: {fileID: 6949918547019142141}
   - component: {fileID: 7837110578543316162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6978,8 +6978,8 @@ Tilemap:
   - first: {x: 64, y: 43, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6988,8 +6988,8 @@ Tilemap:
   - first: {x: 65, y: 43, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6998,8 +6998,8 @@ Tilemap:
   - first: {x: 66, y: 43, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7617,7 +7617,7 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 149
+  - m_RefCount: 146
     m_Data: {fileID: 11400000, guid: 0e81852cf16a9be499b961a4b11ed4d7, type: 2}
   - m_RefCount: 61
     m_Data: {fileID: 11400000, guid: 6e617b333fd0aeb4788c689cc683d257, type: 2}
@@ -7635,7 +7635,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 37a02cd0ecd0b5f4eae076659d263c21, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: cafc6fff3c1a17940bc4fd1dcef51174, type: 2}
-  - m_RefCount: 82
+  - m_RefCount: 85
     m_Data: {fileID: 11400000, guid: 85c9321755d966a4886a2f118c237b8a, type: 2}
   - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: 412d8fa5e00a9bd45ae8f49544946831, type: 2}
@@ -7652,7 +7652,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 149
+  - m_RefCount: 146
     m_Data: {fileID: -875808803, guid: 426724b07c6c3c24c91fe60db71756eb, type: 3}
   - m_RefCount: 61
     m_Data: {fileID: 771607280, guid: 426724b07c6c3c24c91fe60db71756eb, type: 3}
@@ -7670,7 +7670,7 @@ Tilemap:
     m_Data: {fileID: 1875641861, guid: 426724b07c6c3c24c91fe60db71756eb, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -503340288, guid: 426724b07c6c3c24c91fe60db71756eb, type: 3}
-  - m_RefCount: 82
+  - m_RefCount: 85
     m_Data: {fileID: 1980127216, guid: 426724b07c6c3c24c91fe60db71756eb, type: 3}
   - m_RefCount: 11
     m_Data: {fileID: 1918554866, guid: 426724b07c6c3c24c91fe60db71756eb, type: 3}
@@ -7832,7 +7832,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2022730035
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
@@ -54816,8 +54816,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8449866449547332567}
   - {fileID: 8218238334443452468}
+  - {fileID: 8449866449547332567}
   - {fileID: 778938948364444293}
   - {fileID: 6094393001676429527}
   - {fileID: 8430813212429996461}
@@ -54846,7 +54846,7 @@ GameObject:
   - component: {fileID: 778938948364444293}
   - component: {fileID: 7160898188658831563}
   - component: {fileID: 1677289032180800411}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hazards
   m_TagString: Hazards
   m_Icon: {fileID: 0}
@@ -55280,8 +55280,8 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -2022730035
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0.03125, z: 0}
