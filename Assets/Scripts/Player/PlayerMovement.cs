@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float fallMultiplier = 2.5f;   // faster fall
     [SerializeField] float lowJumpMultiplier = 2f;  // tap = small jump
 
+    [Header("Climbing")]
+    [SerializeField] float climbSpeed = 5f;
+    [SerializeField] LayerMask ladderLayer;
+
     // ─── Private Variables ──────────────────────────────────────────────
     Rigidbody2D rb;
     Animator animator;
@@ -23,14 +27,15 @@ public class PlayerMovement : MonoBehaviour
 
     bool isGrounded;
     bool isAlive = true;
+
+    // Movement input
     float horizontalInput;
+    float verticalInput;
 
-    // Ladder support
-    [Header("Climbing")]
-    [SerializeField] float climbSpeed = 5f;
-    [SerializeField] LayerMask ladderLayer;
+    // Ladder state
+    bool isOnLadder;   // inside ladder trigger
+    bool isClimbing;   // actively climbing (pressing up/down)
 
-    bool isOnLadder;
     float originalGravity;
 
     // ─── Lifecycle ───────────────────────────────────────────────────────
@@ -39,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Save default gravity so we can restore it after climbing
         originalGravity = rb.gravityScale;
     }
 
@@ -48,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         ReadInput();
         CheckGrounded();
+        HandleClimb();     
         HandleJump();
         FlipSprite();
         UpdateAnimator();
@@ -56,20 +64,36 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (!isAlive) return;
+
         Move();
-        ApplyBetterJumpPhysics();
+
+        // Only apply extra gravity when NOT climbing
+        if (!isClimbing)
+        {
+            ApplyBetterJumpPhysics();
+        }
     }
 
     // ─── Input ───────────────────────────────────────────────────────────
     void ReadInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal"); // -1, 0, or 1
+        verticalInput = Input.GetAxisRaw("Vertical");     // -1, 0, or 1 (for ladders)
     }
 
     // ─── Movement ────────────────────────────────────────────────────────
     void Move()
     {
-        rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        if (isClimbing)
+        {
+            // Climbing movement (vertical control replaces gravity)
+            rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, verticalInput * climbSpeed);
+        }
+        else
+        {
+            // Normal ground/air movement
+            rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        }
     }
 
     // ─── Ground Check ────────────────────────────────────────────────────
@@ -81,6 +105,9 @@ public class PlayerMovement : MonoBehaviour
     // ─── Jump ────────────────────────────────────────────────────────────
     void HandleJump()
     {
+        // Prevent jumping while climbing
+        if (isClimbing) return;
+
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -102,6 +129,30 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // ─── Climbing ────────────────────────────────────────────────────────
+    void HandleClimb()
+    {
+        // Not touching ladder → normal physics
+        if (!isOnLadder)
+        {
+            isClimbing = false;
+            rb.gravityScale = originalGravity;
+            return;
+        }
+
+        // While on ladder, keep gravity off
+        rb.gravityScale = 0f;
+
+        // Move vertically using input
+        rb.linearVelocity = new Vector2(0f, verticalInput * climbSpeed);
+
+        // If no vertical input, stay attached and don't slide
+        if (Mathf.Abs(verticalInput) < 0.01f)
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
+    }   
+
     // ─── Sprite Flip ────────────────────────────────────────────────────
     void FlipSprite()
     {
@@ -115,9 +166,39 @@ public class PlayerMovement : MonoBehaviour
     void UpdateAnimator()
     {
         bool isRunning = Mathf.Abs(horizontalInput) > Mathf.Epsilon;
-        animator.SetBool("isRunning", isRunning);
+
+        // Disable run animation while climbing
+        animator.SetBool("isRunning", isRunning && !isClimbing);
+
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("yVelocity", rb.linearVelocity.y);
+
+        // Climbing animation control
+        animator.SetBool("isClimbing", isOnLadder);
+        animator.SetFloat("climbSpeed", 1f);
+    }
+
+    // ─── Trigger Detection (Ladders) ─────────────────────────────────────
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check if collided object is on ladder layer
+        if (((1 << other.gameObject.layer) & ladderLayer) != 0)
+        {
+            isOnLadder = true;
+            rb.gravityScale = 0f;       // Stop falling immediately
+            rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & ladderLayer) != 0)
+        {
+            isOnLadder = false;
+
+            // Restore gravity when leaving ladder
+            rb.gravityScale = originalGravity;
+        }
     }
 
     // ─── Public API (called by other scripts) ───────────────────────────
@@ -127,30 +208,5 @@ public class PlayerMovement : MonoBehaviour
         animator.SetTrigger("die");
         rb.linearVelocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (((1 << other.gameObject.layer) & ladderLayer) != 0)
-            isOnLadder = true;
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (((1 << other.gameObject.layer) & ladderLayer) != 0)
-        {
-            isOnLadder = false;
-            rb.gravityScale = originalGravity;
-        }
-    }
-
-    // ─── Climbing ────────────────────────────────────────────────────────
-    void HandleClimb()
-    {
-        if (!isOnLadder) return;
-
-        float verticalInput = Input.GetAxisRaw("Vertical");
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, verticalInput * climbSpeed);
-        rb.gravityScale = (Mathf.Abs(verticalInput) > 0) ? 0f : originalGravity;
     }
 }
