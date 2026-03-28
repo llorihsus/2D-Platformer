@@ -141,8 +141,7 @@
 | ☐ | x | Arrows fire in the direction the player faces |
 | ☐ | x | `FirePoint` child object positioned correctly |
 
-**Section Notes:** _______________________________________________
-
+**Section Notes:** player does not shoot arrows, instead it jumps on the enemies head hitbox similar to mario games
 ---
 
 ## ❤️ Section 9 — Health & Damage
