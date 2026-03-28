@@ -307,8 +307,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../2DPlatformer/2DPlatformer.fspro
-  sourceBankPath: ../../2DPlatformer/Build
+  sourceProjectPath: ../../Users/arago/OneDrive/Documents/2DPlatformer/2DPlatformer.fspro
+  sourceBankPath: ../../Users/arago/OneDrive/Documents/2DPlatformer/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -348,18 +348,18 @@ MonoBehaviour:
   HideSetupWizard: 1
   LastEventReferenceScanVersion: 131858
   Platforms:
-  - {fileID: 3538597195635388389}
-  - {fileID: 888520731904929997}
+  - {fileID: -8054431316055707730}
   - {fileID: -4835998592085875909}
   - {fileID: -3294989761165376135}
-  - {fileID: 4861539294517896957}
   - {fileID: -2901912209329860819}
-  - {fileID: 9162371759540207440}
-  - {fileID: 2386921276942269731}
-  - {fileID: -8054431316055707730}
-  - {fileID: 4532393870940178552}
-  - {fileID: 8652155249102831647}
+  - {fileID: 888520731904929997}
   - {fileID: 1194218595589873389}
+  - {fileID: 2386921276942269731}
+  - {fileID: 3538597195635388389}
+  - {fileID: 4532393870940178552}
+  - {fileID: 4861539294517896957}
+  - {fileID: 8652155249102831647}
+  - {fileID: 9162371759540207440}
   MigratedPlatforms: 0a00000000000000150000000b00000009000000050000001200000008000000060000000c0000000200000001000000
 --- !u!114 &888520731904929997
 MonoBehaviour:
@@ -431,16 +431,16 @@ MonoBehaviour:
     HasValue: 0
   displaySortOrder: 0
   childIdentifiers:
+  - 0f8eb3f400726694eb47beb1a9f94ce8
   - 2fea114e74ecf3c4f920e1d5cc1c4c40
   - c88d16e5272a4e241b0ef0ac2e53b73d
-  - 2c5177b11d81d824dbb064f9ac8527da
   - e7a046c753c3c3d4aacc91f6597f310d
-  - fd7c55dab0fce234b8c25f6ffca523c1
-  - 52eb9df5db46521439908db3a29a1bbb
-  - 0f8eb3f400726694eb47beb1a9f94ce8
-  - 46fbfdf3fc43db0458918377fd40293e
-  - de700ef3f37a49b58a57ae3addf01ad9
   - b7716510a1f36934c87976f3a81dbf3d
+  - 52eb9df5db46521439908db3a29a1bbb
+  - 46fbfdf3fc43db0458918377fd40293e
+  - 2c5177b11d81d824dbb064f9ac8527da
+  - de700ef3f37a49b58a57ae3addf01ad9
+  - fd7c55dab0fce234b8c25f6ffca523c1
   codecChannels:
     Value: []
     HasValue: 0

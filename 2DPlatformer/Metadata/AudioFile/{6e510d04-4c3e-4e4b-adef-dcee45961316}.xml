@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{6e510d04-4c3e-4e4b-adef-dcee45961316}">
+		<property name="assetPath">
+			<value>freesound_community-concrete-footsteps-6752.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>59.951020408163266</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{fbaeb23e-b204-41d9-a871-95393371846c}</destination>
+		</relationship>
+	</object>
+</objects>

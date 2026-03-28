@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using FMODUnity;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
         ReadInput();
         CheckGrounded();
-        HandleClimb();     
+        HandleClimb();
         HandleJump();
         FlipSprite();
         UpdateAnimator();
